@@ -50,7 +50,7 @@ public class BodyPart {
 
     private static int getBodyResourceID(int pBodyID) {
         // pBodyID = line 7 ~ 30에서 정의한 몸의 각 부분의 ID값
-        // 몸 부분 ID 받아들이면
+        // 몸 부분 ID 받아들이면 어떤 부위인지 이름 리턴
         switch (pBodyID) {
             case ABDOMINAUX: // 복근
                 return R.string.abdominaux;
@@ -153,26 +153,29 @@ public class BodyPart {
     public long getId() {
         return id;
     }
+    // ID 리턴
 
-    /**
-     * @return Resource ID of the name of the body part
-     */
+
     public int getResourceNameID() {
         return getBodyResourceID((int) id);
     }
+    // 몸 부위의 ID 리턴
 
-    /**
-     * @return Resource ID of the logo
-     */
+
     public int getResourceLogoID() {
         return getBodyLogoID((int) id);
     }
+    // Body logo ID 리턴
+
 
     public BodyMeasure getLastMeasure() {
         return this.mLastMeasure;
     }
+    // 최근 측정값 리턴
+
 
     public void setLastMeasure(BodyMeasure lastmeasure) {
         this.mLastMeasure = lastmeasure;
     }
+    // 최근 측정값 설정
 }

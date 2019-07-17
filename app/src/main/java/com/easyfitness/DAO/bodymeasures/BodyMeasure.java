@@ -37,7 +37,7 @@ public class BodyMeasure {
      */
     public int getBodyPartID() {
         return mBodypart_id;
-    }   // Bodypart ID 리턴
+    }   // 몸 부위 ID 리턴
 
     public float getBodyMeasure() {
         return mMeasure;
