@@ -2,96 +2,103 @@ package com.easyfitness.DAO.bodymeasures;
 
 import com.easyfitness.R;
 
-/* DataBase Object */
+/* 데이터베이스 객체(object) */
 public class BodyPart {
-    public static final int ABDOMINAUX = 0;
-    public static final int ADDUCTEURS = 1;
-    public static final int BICEPS = 2;
-    public static final int TRICEPS = 3;
-    public static final int DELTOIDS = 4;
-    public static final int MOLLETS = 5;
-    public static final int PECTORAUX = 6;
-    public static final int DORSEAUX = 7;
-    public static final int QUADRICEPS = 8;
-    public static final int ISCHIOJAMBIERS = 9;
-    public static final int LEFTARM = 10;
-    public static final int RIGHTARM = 11;
-    public static final int LEFTTHIGH = 12;
-    public static final int RIGHTTHIGH = 13;
-    public static final int LEFTCALVES = 14;
-    public static final int RIGHTCALVES = 15;
-    public static final int WAIST = 16;
-    public static final int NECK = 17;
-    public static final int BEHIND = 18;
-    public static final int WEIGHT = 19;
-    public static final int FAT = 20;
-    public static final int BONES = 21;
-    public static final int WATER = 22;
-    public static final int MUSCLES = 23;
-    private int id;    // Notez que l'identifiant est un long
-    private BodyMeasure mLastMeasure;
+    public static final int ABDOMINAUX = 0; // 복근
+    public static final int ADDUCTEURS = 1; // 내전근 (다리)
+    public static final int BICEPS = 2;     // 이두근 (팔)
+    public static final int TRICEPS = 3;    // 삼두근 (팔)
+    public static final int DELTOIDS = 4;   // 삼각근 (가슴)
+    public static final int MOLLETS = 5;    // 종아리 (다리)
+    public static final int PECTORAUX = 6;  // 흉근 (가슴)
+    public static final int DORSEAUX = 7;   // 등 (가슴)
+    public static final int QUADRICEPS = 8; // 넓적다리 앞쪽의 근육 (다리)
+    public static final int ISCHIOJAMBIERS = 9; // 다리 근육 (다리)
+    public static final int LEFTARM = 10;   // 왼쪽 팔 (팔)
+    public static final int RIGHTARM = 11;  // 오른쪽 팔 (팔)
+    public static final int LEFTTHIGH = 12; // 왼쪽 허벅지 (다리)
+    public static final int RIGHTTHIGH = 13;// 오른쪽 허벅지 (다리)
+    public static final int LEFTCALVES = 14;// 왼쪽 종아리 (다리)
+    public static final int RIGHTCALVES = 15; // 오른쪽 종아리 (다리)
+    public static final int WAIST = 16;     // 허리
+    public static final int NECK = 17;      // 목
+    public static final int BEHIND = 18;    // 엉덩이
+    public static final int WEIGHT = 19;    // 몸무게
+    public static final int FAT = 20;       // 체지방
+    public static final int BONES = 21;     // 뼈
+    public static final int WATER = 22;     // 체수분
+    public static final int MUSCLES = 23;   // 근육
+
+    private int id;    // ID는 long 타입
+    private BodyMeasure mLastMeasure;   // 최근 측정값
 
     public BodyPart(int id) {
+        // ID를 받아들이면
+        // BodyPart 클래스 내의 id 설정
         super();
         this.id = id;
         this.mLastMeasure = null;
     }
 
     public BodyPart(int id, BodyMeasure lastMeasure) {
+        // ID랑 최근 측정값 받아들이면
+        // BodyPart 클래스 내의 id랑 lastMeasure 설정
         super();
         this.id = id;
         this.mLastMeasure = lastMeasure;
     }
 
     private static int getBodyResourceID(int pBodyID) {
+        // pBodyID = line 7 ~ 30에서 정의한 몸의 각 부분의 ID값
+        // 몸 부분 ID 받아들이면
         switch (pBodyID) {
-            case ABDOMINAUX:
+            case ABDOMINAUX: // 복근
                 return R.string.abdominaux;
-            case ADDUCTEURS:
+            case ADDUCTEURS: // 내전근 (다리)
                 return R.string.adducteurs;
-            case BICEPS:
+            case BICEPS: // 이두근 (팔)
                 return R.string.biceps;
-            case TRICEPS:
+            case TRICEPS: // 삼두근 (팔)
                 return R.string.triceps;
-            case DELTOIDS:
+            case DELTOIDS: // 삼각근 (가슴)
                 return R.string.deltoids;
-            case MOLLETS:
+            case MOLLETS: // 종아리 (다리)
                 return R.string.mollets;
-            case PECTORAUX:
+            case PECTORAUX: // 흉근 (가슴)
                 return R.string.pectoraux;
-            case DORSEAUX:
+            case DORSEAUX: // 등 (가슴)
                 return R.string.dorseaux;
-            case QUADRICEPS:
+            case QUADRICEPS: // 넓적다리 앞쪽의 근육 (다리)
                 return R.string.quadriceps;
-            case ISCHIOJAMBIERS:
+            case ISCHIOJAMBIERS: // 다리 근육 (다리)
                 return R.string.ischio_jambiers;
-            case LEFTARM:
+            case LEFTARM: // 왼쪽 팔 (팔)
                 return R.string.left_arm;
-            case RIGHTARM:
+            case RIGHTARM: // 오른쪽 팔 (팔)
                 return R.string.right_arm;
-            case LEFTTHIGH:
+            case LEFTTHIGH: // 왼쪽 허벅지 (다리)
                 return R.string.left_thigh;
-            case RIGHTTHIGH:
+            case RIGHTTHIGH: // 오른쪽 허벅지 (다리)
                 return R.string.right_thigh;
-            case LEFTCALVES:
+            case LEFTCALVES: // 왼쪽 종아리 (다리)
                 return R.string.left_calves;
-            case RIGHTCALVES:
+            case RIGHTCALVES: // 오른쪽 종아리 (다리)
                 return R.string.right_calves;
-            case WAIST:
+            case WAIST: // 허리
                 return R.string.waist;
-            case NECK:
+            case NECK: // 목
                 return R.string.neck;
-            case BEHIND:
+            case BEHIND: // 엉덩이
                 return R.string.behind;
-            case WEIGHT:
+            case WEIGHT: // 몸무게 (kg)
                 return R.string.weightLabel;
-            case FAT:
+            case FAT: // 체지방 (%)
                 return R.string.fatLabel;
-            case BONES:
+            case BONES: // 뼈 (%)
                 return R.string.bonesLabel;
-            case WATER:
+            case WATER: // 체수분 (%)
                 return R.string.waterLabel;
-            case MUSCLES:
+            case MUSCLES: // 근육
                 return R.string.musclesLabel;
         }
 
@@ -100,43 +107,43 @@ public class BodyPart {
 
     private static int getBodyLogoID(int pBodyID) {
         switch (pBodyID) {
-            case ABDOMINAUX:
+            case ABDOMINAUX: // 복근
                 return R.drawable.ic_chest;
-            case ADDUCTEURS:
+            case ADDUCTEURS: // 내전근 (다리)
                 return R.drawable.ic_leg;
-            case BICEPS:
+            case BICEPS: // 이두근 (팔)
                 return R.drawable.ic_arm;
-            case TRICEPS:
+            case TRICEPS: // 삼두근 (팔)
                 return R.drawable.ic_arm;
-            case DELTOIDS:
+            case DELTOIDS: // 삼각근 (가슴)
                 return R.drawable.ic_chest;
-            case MOLLETS:
+            case MOLLETS: // 종아리 (다리)
                 return R.drawable.ic_leg;
-            case PECTORAUX:
+            case PECTORAUX: // 흉근 (가슴)
                 return R.drawable.ic_chest_measure;
-            case DORSEAUX:
+            case DORSEAUX: // 등 (가슴)
                 return R.drawable.ic_chest;
-            case QUADRICEPS:
+            case QUADRICEPS: // 넓적다리 앞쪽의 근육 (다리)
                 return R.drawable.ic_leg;
-            case ISCHIOJAMBIERS:
+            case ISCHIOJAMBIERS: // 다리 근육 (다리)
                 return R.drawable.ic_leg;
-            case LEFTARM:
+            case LEFTARM: // 왼쪽 팔 (팔)
                 return R.drawable.ic_arm_measure;
-            case RIGHTARM:
+            case RIGHTARM: // 오른쪽 팔 (팔)
                 return R.drawable.ic_arm_measure;
-            case LEFTTHIGH:
+            case LEFTTHIGH: // 왼쪽 허벅지 (다리)
                 return R.drawable.ic_tight_measure;
-            case RIGHTTHIGH:
+            case RIGHTTHIGH: // 오른쪽 허벅지 (다리)
                 return R.drawable.ic_tight_measure;
-            case LEFTCALVES:
+            case LEFTCALVES: // 왼쪽 종아리 (다리)
                 return R.drawable.ic_calve_measure;
-            case RIGHTCALVES:
+            case RIGHTCALVES: // 오른쪽 종아리 (다리)
                 return R.drawable.ic_calve_measure;
-            case WAIST:
+            case WAIST: // 허리
                 return R.drawable.ic_waist_measure;
-            case NECK:
+            case NECK: // 목
                 return R.drawable.ic_neck;
-            case BEHIND:
+            case BEHIND: // 엉덩이
                 return R.drawable.ic_buttock_measure;
         }
 
