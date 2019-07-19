@@ -114,33 +114,33 @@ public class MainActivity extends AppCompatActivity {
     private String mCurrentMachine = "";
     private boolean mIntro014Launched = false;
     private boolean mMigrationBD15done = false;
-    private PopupMenu.OnMenuItemClickListener onMenuItemClick = item -> {
+    private PopupMenu.OnMenuItemClickListener onMenuItemClick = item -> {                       //Popup Menu 나타내는 부분
         switch (item.getItemId()) {
-            case R.id.create_newprofil:
-                getActivity().CreateNewProfil();
+            case R.id.create_newprofil:                                                         // 새로운 프로필 생성한다는 부분
+                getActivity().CreateNewProfil();                                                   // getActiviry method를 이용하여 새로운 프로필 생성
                 return true;
             case R.id.photo_profil:
-                String[] optionListArray = new String[2];
-                optionListArray[0] = getActivity().getResources().getString(R.string.camera);
-                optionListArray[1] = getActivity().getResources().getString(R.string.gallery);
+                String[] optionListArray = new String[2];                                          // 사진 추가 옵션
+                optionListArray[0] = getActivity().getResources().getString(R.string.camera);                                                     // 카메라로 찍어서 프로필 설정할 수 있는 부분
+                optionListArray[1] = getActivity().getResources().getString(R.string.gallery);                                                      // 갤러리에서 사진 가져와서 프로필 설정
                 //profilListArray[2] = "Remove Image";
 
                 //requestPermissionForWriting(pF);
 
                 AlertDialog.Builder itemActionbuilder = new AlertDialog.Builder(getActivity());
                 itemActionbuilder.setTitle("").setItems(optionListArray, new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
+                    public void onClick(DialogInterface dialog, int which) {                           // ( 프로필 페이지 눌러서 카메라 버튼 누르면 나오는 세가지 경우인듯)
                         ListView lv = ((AlertDialog) dialog).getListView();
 
                         switch (which) {
                             // Galery
-                            case 1:
+                            case 1:                                                                     // 위에 써놓았던 갤러리 선택시 들어가지는 옵션
                                 Intent photoPickerIntent = new Intent(Intent.ACTION_PICK);
                                 photoPickerIntent.setType("image/*");
                                 startActivityForResult(photoPickerIntent, ImageUtil.REQUEST_PICK_GALERY_PHOTO);
                                 break;
                             // Camera with Cropping
-                            case 0:
+                            case 0:                                                                     // 위에 써놓았던 카메라 선택시 들어가지는 옵션
                                 //dispatchTakePictureIntent(mF);
                                 // start picker to get image for cropping and then use the image in cropping activity
                                 CropImage.activity()
@@ -157,7 +157,7 @@ public class MainActivity extends AppCompatActivity {
                 });
                 itemActionbuilder.show();
                 return true;
-            case R.id.change_profil:
+            case R.id.change_profil:                                                            // 프로필 사진 눌렀을 때 profil change하는 부분
                 String[] profilListArray = getActivity().mDbProfils.getAllProfil();
 
                 AlertDialog.Builder changeProfilbuilder = new AlertDialog.Builder(getActivity());
@@ -171,7 +171,7 @@ public class MainActivity extends AppCompatActivity {
                     });
                 changeProfilbuilder.show();
                 return true;
-            case R.id.delete_profil:
+            case R.id.delete_profil:                                                            // profil 삭제하는 부분
                 String[] profildeleteListArray = getActivity().mDbProfils.getAllProfil();
 
                 AlertDialog.Builder deleteProfilbuilder = new AlertDialog.Builder(getActivity());
@@ -189,10 +189,10 @@ public class MainActivity extends AppCompatActivity {
                     });
                 deleteProfilbuilder.show();
                 return true;
-            case R.id.rename_profil:
+            case R.id.rename_profil:                    //profil 의 이름 변경
                 getActivity().renameProfil();
                 return true;
-            case R.id.param_profil:
+            case R.id.param_profil:                 // 이거가 profile page로 이동하는 것 같음
                 showFragment(PROFILE);
                 return true;
             default:
@@ -269,7 +269,7 @@ public class MainActivity extends AppCompatActivity {
             savePreferences();
         }
 
-        /* creation de l'arborescence de l'application */
+        /* creation de l'arborescence de l'application */           // 응용프로그램 트리 만들기
         File folder = new File(Environment.getExternalStorageDirectory() + "/FastnFitness");
         boolean success = true;
         if (!folder.exists()) {
@@ -294,7 +294,7 @@ public class MainActivity extends AppCompatActivity {
 
         dataList = new ArrayList<>();
         mDrawerLayout = findViewById(R.id.drawer_layout);
-        mDrawerList = findViewById(R.id.left_drawer);
+        mDrawerList = findViewById(R.id.left_drawer);                               // 이 부분이 우리가 오른쪽 눌렀을 때 나오는 이름들 지정하는 부분!
 
         DrawerItem drawerTitleItem = new DrawerItem("TITLE", R.drawable.ic_profile_black, true);
 
@@ -302,7 +302,7 @@ public class MainActivity extends AppCompatActivity {
         dataList.add(new DrawerItem(this.getResources().getString(R.string.menu_Workout), R.drawable.ic_barbell, true));
         //dataList.add(new DrawerItem(this.getResources().getString(R.string.CardioMenuLabel), R.drawable.ic_running, true));
         dataList.add(new DrawerItem(this.getResources().getString(R.string.MachinesLabel), R.drawable.ic_machine, true));
-        dataList.add(new DrawerItem(this.getResources().getString(R.string.weightMenuLabel), R.drawable.ic_scale, true));
+        dataList.add(new DrawerItem(this.getResources().getString(R.string.weightMenuLabel), R.drawable.ic_scale, true));           // 우린 이 부분을 왔다 갔다해야함(Weight관련 정보)
         dataList.add(new DrawerItem(this.getResources().getString(R.string.bodytracking), R.drawable.ic_measuring_tape, true));
         dataList.add(new DrawerItem(this.getResources().getString(R.string.SettingLabel), R.drawable.ic_params, true));
         dataList.add(new DrawerItem(this.getResources().getString(R.string.AboutLabel), R.drawable.ic_action_info_outline, true));
@@ -400,7 +400,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
+    public boolean onCreateOptionsMenu(Menu menu) {                         //옵션 메뉴 생성부분
         // Inflate the menu items for use in the action bar
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.main_activity_actions, menu);
@@ -426,7 +426,7 @@ public class MainActivity extends AppCompatActivity {
         return super.onPrepareOptionsMenu(menu);
     }
 
-    private void exportDatabase() {
+    private void exportDatabase() {                                     //오른쪽 점세개 클릭시 나타나는 exportDatabase에 관한 코드
         // Here, thisActivity is the current activity
         if (ContextCompat.checkSelfPermission(this,
             Manifest.permission.WRITE_EXTERNAL_STORAGE)
@@ -581,7 +581,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public boolean CreateNewProfil() {
+    public boolean CreateNewProfil() {                                                  // profil 새로 생성하는 부분
         AlertDialog.Builder newProfilBuilder = new AlertDialog.Builder(this);
 
         newProfilBuilder.setTitle(getActivity().getResources().getText(R.string.createProfilTitle));
@@ -615,7 +615,7 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
-    public boolean renameProfil() {
+    public boolean renameProfil() {                                             // 프로필 이름 변경하는 부분
         AlertDialog.Builder newBuilder = new AlertDialog.Builder(this);
 
         newBuilder.setTitle(getActivity().getResources().getText(R.string.renameProfilTitle));
