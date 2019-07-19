@@ -286,10 +286,10 @@ public class MainActivity extends AppCompatActivity {
                     Environment.getExternalStorageDirectory() + "/FastnFitness/crashreport"));
             }
         }
-
+        //어플 시작 페이지를 weight track 카테고리로 변경(수정)
         if (savedInstanceState == null) {
-            showFragment(FONTESPAGER, false); // Create fragment, do not add to backstack
-            currentFragmentName = FONTESPAGER;
+            showFragment(WEIGHT, false); // Create fragment, do not add to backstack
+            currentFragmentName = WEIGHT;
         }
 
         dataList = new ArrayList<>();
@@ -297,13 +297,13 @@ public class MainActivity extends AppCompatActivity {
         mDrawerList = findViewById(R.id.left_drawer);                               // 이 부분이 우리가 오른쪽 눌렀을 때 나오는 이름들 지정하는 부분!
 
         DrawerItem drawerTitleItem = new DrawerItem("TITLE", R.drawable.ic_profile_black, true);
-
+        //줄 순서 바꾸면 카테고리창 순서도 바뀜(내용은 안 바뀜) //isActive를 false로 변경시 카테고리 창에서 해당 부분이 검은글씨+(soon)표시뜸
         dataList.add(drawerTitleItem);
-        dataList.add(new DrawerItem(this.getResources().getString(R.string.menu_Workout), R.drawable.ic_barbell, true));
+        dataList.add(new DrawerItem(this.getResources().getString(R.string.weightMenuLabel), R.drawable.ic_scale, true)); // 우린 이 부분을 왔다 갔다해야함(Weight관련 정보) +weight track 칸 위로 옮김(수정)
+        dataList.add(new DrawerItem(this.getResources().getString(R.string.bodytracking), R.drawable.ic_measuring_tape, true));  //body track 카테고리 위로 올림(수정)
         //dataList.add(new DrawerItem(this.getResources().getString(R.string.CardioMenuLabel), R.drawable.ic_running, true));
+        dataList.add(new DrawerItem(this.getResources().getString(R.string.menu_Workout), R.drawable.ic_barbell, true));
         dataList.add(new DrawerItem(this.getResources().getString(R.string.MachinesLabel), R.drawable.ic_machine, true));
-        dataList.add(new DrawerItem(this.getResources().getString(R.string.weightMenuLabel), R.drawable.ic_scale, true));           // 우린 이 부분을 왔다 갔다해야함(Weight관련 정보)
-        dataList.add(new DrawerItem(this.getResources().getString(R.string.bodytracking), R.drawable.ic_measuring_tape, true));
         dataList.add(new DrawerItem(this.getResources().getString(R.string.SettingLabel), R.drawable.ic_params, true));
         dataList.add(new DrawerItem(this.getResources().getString(R.string.AboutLabel), R.drawable.ic_action_info_outline, true));
 
@@ -312,7 +312,7 @@ public class MainActivity extends AppCompatActivity {
 
         mDrawerList.setAdapter(mDrawerAdapter);
 
-        roundProfile = top_toolbar.findViewById(R.id.imageProfile);
+        roundProfile = top_toolbar.findViewById(R.id.imageProfile);         //프로필 사진 동그라미
 
         mDrawerToggle = new ActionBarDrawerToggle(
             this,                  /* host Activity */
@@ -466,7 +466,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
+    public boolean onOptionsItemSelected(MenuItem item) {       //점 세개 (옵션) 설정
         // The action bar home/up action should open or close the drawer.
         // ActionBarDrawerToggle will take care of this.
         if (mDrawerToggle.onOptionsItemSelected(item)) {
@@ -687,7 +687,7 @@ public class MainActivity extends AppCompatActivity {
         showFragment(pFragmentName, true);
     }
 
-    private void showFragment(String pFragmentName, boolean addToBackStack) {
+    private void showFragment(String pFragmentName, boolean addToBackStack) {  //카테고리 내용 띄우는 거
 
         if (currentFragmentName.equals(pFragmentName))
             return; // If this is already the current fragment, do no replace.
@@ -789,7 +789,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void savePhotoProfile(String path) {
         mCurrentProfile.setPhoto(path);// Enregistrer sur le profile le path de la photo.
-        mDbProfils.updateProfile(mCurrentProfile);
+        mDbProfils.updateProfile(mCurrentProfile);  //DB에 프로필 사진 업로드(ㅇ)
     }
 
     public String getCurrentMachine() {
@@ -886,7 +886,7 @@ public class MainActivity extends AppCompatActivity {
     public void restoreToolbar() {
         if (top_toolbar != null) setSupportActionBar(top_toolbar);
     }
-
+    //상단바에 듣고 있는 음악 표시관련(Setting 카테고리에 있음)
     public void showMP3Toolbar(boolean show) {
         Toolbar mp3toolbar = this.findViewById(R.id.musicToolbar);
         if (!show) {
@@ -913,7 +913,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    public void onBackPressed() {
+    public void onBackPressed() {    //뒤로가기 버튼 반응
         int index = getActivity().getSupportFragmentManager().getBackStackEntryCount() - 1;
         if (index >= 0) { // Si on est dans une sous activité
             FragmentManager.BackStackEntry backEntry = getSupportFragmentManager().getBackStackEntryAt(index);
@@ -932,7 +932,7 @@ public class MainActivity extends AppCompatActivity {
             mBackPressed = System.currentTimeMillis();
         }
     }
-
+    //어플 첨 시작할때 프로필 만드는거인듯
     public void initActivity() {
         // Initialisation des objets DB
         mDbProfils = new DAOProfil(this.getApplicationContext());
@@ -968,21 +968,21 @@ public class MainActivity extends AppCompatActivity {
                     showFragment(PROFILE);
                     setTitle(getString(R.string.ProfileLabel));
                     break;
-                case 1:
-                    showFragment(FONTESPAGER);
-                    setTitle(getResources().getText(R.string.menu_Workout));
-                    break;
-                case 2:
-                    showFragment(MACHINES);
-                    setTitle(getResources().getText(R.string.MachinesLabel));
-                    break;
-                case 3:
+                case 1:  //weight track 카테고리 위로 옮김(수정)
                     showFragment(WEIGHT);
                     setTitle(getResources().getText(R.string.weightMenuLabel));
                     break;
-                case 4:
+                case 2:  //body track 카테고리 위로 옮김(수정)
                     showFragment(BODYTRACKING);
                     setTitle(getResources().getText(R.string.bodytracking));
+                    break;
+                case 3:
+                    showFragment(FONTESPAGER);
+                    setTitle(getResources().getText(R.string.menu_Workout));
+                    break;
+                case 4:
+                    showFragment(MACHINES);
+                    setTitle(getResources().getText(R.string.MachinesLabel));
                     break;
                 case 5:
                     showFragment(SETTINGS);
