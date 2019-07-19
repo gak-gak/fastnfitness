@@ -20,6 +20,7 @@ public class DAOStatic extends DAORecord {
     public static final int NBSERIE_FCT = 2;
 
     private static final String TABLE_ARCHI = KEY + "," + DATE + "," + EXERCISE + "," + SERIE + "," + SECONDS + "," + WEIGHT + "," + UNIT + "," + PROFIL_KEY + "," + NOTES + "," + MACHINE_KEY + "," + TIME;
+    // 사용자 프로필 table 내의 요소들을 TABLE_ARCHI로 모두 받아 놓음
 
     public DAOStatic(Context context) {
         super(context);
@@ -40,16 +41,17 @@ public class DAOStatic extends DAORecord {
         }
     }
 
-    // Getting single value
+    // 한 사람의 기록만 보여주는 getStaticRecord 함수
     public StaticExercise getStaticRecord(long id) {
         String selectQuery = "SELECT  " + TABLE_ARCHI + " FROM " + TABLE_NAME + " WHERE " + KEY + "=" + id;
+        // id 사용자의 프로필 table 내의 모든 요소들을 모두 보여주는 query문
         List<StaticExercise> valueList;
 
         valueList = getRecordsList(selectQuery);
-        if (valueList.isEmpty())
+        if (valueList.isEmpty())        // query문의 결과값이 아무것도 없을 경우, null return
             return null;
         else
-            return valueList.get(0);
+            return valueList.get(0);    // query문의 결과값 return
     }
 
     // Getting All Records
@@ -108,7 +110,7 @@ public class DAOStatic extends DAORecord {
         return valueList;
     }
 
-    // Getting All Records
+    // 모든 사람의 기록 모두 보여주는 getAllStaticRecords 함수
     public List<StaticExercise> getAllStaticRecords() {
         // Select All Query
         String selectQuery = "SELECT  " + TABLE_ARCHI + " FROM " + TABLE_NAME
@@ -288,7 +290,7 @@ public class DAOStatic extends DAORecord {
      * @return the total weight for this day
      */
     public float getTotalWeightSession(Date pDate) {
-
+        // ~부터 현재까지의 모든 weight 기록을 보여주는 getTotalWeightSession 함수
         SQLiteDatabase db = this.getReadableDatabase();
         mCursor = null;
         float lReturn = 0;
@@ -321,7 +323,7 @@ public class DAOStatic extends DAORecord {
      * @return Max weight for a profile p and a machine m
      */
     public Weight getMax(Profile p, Machine m) {
-
+        // 체중 max값 return해주는 getMax 함수
         SQLiteDatabase db = this.getReadableDatabase();
         mCursor = null;
         Weight w = null;
@@ -347,7 +349,7 @@ public class DAOStatic extends DAORecord {
      * @return Min weight for a profile p and a machine m
      */
     public Weight getMin(Profile p, Machine m) {
-
+        // 체중 min값 return 해주는 getMin 함수
         SQLiteDatabase db = this.getReadableDatabase();
         mCursor = null;
         Weight w = null;
