@@ -47,7 +47,7 @@ public class WeightFragment extends Fragment {
     private DAOProfil mDb = null;
     private AdapterView.OnClickListener showDetailsFragment = v -> {
         int bodyPartID = BodyPart.WEIGHT;
-        switch (v.getId()) {
+        switch (v.getId()) {                                    //사용자의 아이디로 구분해서 몸무게 파트의 대한 정보를 가져오는 듯
             case R.id.weightDetailsButton:
                 bodyPartID = BodyPart.WEIGHT;
                 break;
@@ -62,7 +62,7 @@ public class WeightFragment extends Fragment {
                 break;
         }
 
-        BodyPartDetailsFragment fragment = BodyPartDetailsFragment.newInstance(bodyPartID, false);
+        BodyPartDetailsFragment fragment = BodyPartDetailsFragment.newInstance(bodyPartID, false);                  //BodyPartDetailsFragment꼴에 새로운 것 생성
         FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
         // Replace whatever is in the fragment_container view with this fragment,
         // and add the transaction to the back stack so the user can navigate back
@@ -85,7 +85,7 @@ public class WeightFragment extends Fragment {
 
         }
     };
-    private EditableInputView.OnTextChangedListener itemOnTextChange = view -> {
+    private EditableInputView.OnTextChangedListener itemOnTextChange = view -> {                        // 넣은 값들을 수정하는 부분 ( Weight, Fat, Muscles, Water )
         EditableInputViewWithDate v = (EditableInputViewWithDate) view;
         //save values to databases
         try {
@@ -284,12 +284,12 @@ public class WeightFragment extends Fragment {
      * Normalized Fat-Free Mass Index: Normalized FFMI [kg/m2] = FFM [kg] / (height [m])2 + 6.1 × (1.8 − height [m])
      * https://goodcalculators.com/ffmi-fat-free-mass-index-calculator/
      */
-    private double calculateFfmi(float weight, int size, float bodyFat) {
+    private double calculateFfmi(float weight, int size, float bodyFat) {                   //fmi를 계산하는 부분
         double ffmi = 0;
 
         if (bodyFat == 0) return 0;
 
-        ffmi = weight * (1-(bodyFat/100)) / (size/ 100.0*size/ 100.0);
+        ffmi = weight * (1-(bodyFat/100)) / (size/ 100.0*size/ 100.0);                          //fmi식
 
         return ffmi;
     }
@@ -305,7 +305,7 @@ public class WeightFragment extends Fragment {
 
         if (bodyFat == 0) return 0;
 
-        ffmi = weight * (1-(bodyFat/100)) / (size*size) + 6.1*(1.8-size);
+        ffmi = weight * (1-(bodyFat/100)) / (size*size) + 6.1*(1.8-size);                       // 보통 fmi를 계산해주는 식
 
         return ffmi;
     }
@@ -317,7 +317,7 @@ public class WeightFragment extends Fragment {
      * 22: excellent     *
      * 23 – 25: superior     *
      * 26 – 27: scores considered suspicious but still attainable naturally     */
-    private String getFfmiTextForMen(double ffmi) {
+    private String getFfmiTextForMen(double ffmi) {                                         //fmi 지수에 따라 나타내어주는 부분
         if (ffmi < 17) {
             return "below average";
         } else if (ffmi < 19) {
@@ -342,7 +342,7 @@ public class WeightFragment extends Fragment {
      * 22: excellent     *
      * 23 – 25: superior     *
      * 26 – 27: scores considered suspicious but still attainable naturally     */
-    private String getFfmiTextForWomen(double ffmi) {
+    private String getFfmiTextForWomen(double ffmi) {                           //fmi 지수에 따라 나타내어주는 부분
         if (ffmi < 14) {
             return "below average";
         } else if (ffmi < 16) {
@@ -360,7 +360,7 @@ public class WeightFragment extends Fragment {
         }
     }
 
-    private void refreshData() {
+    private void refreshData() {                                                //data초기화 해주는 부분
         View fragmentView = getView();
         if (fragmentView != null) {
             if (getProfil() != null) {
