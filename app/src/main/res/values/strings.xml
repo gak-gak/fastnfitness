@@ -59,8 +59,8 @@
     <string name="DurationLabel">Duration</string>
     <string name="ExerciceLabel">Exercises</string>
 
-    <!-- Profile Fragment -->
-    <string name="weightMenuLabel">Weight Track</string>
+    <!-- Profile Fragment -->  <!-- 여기가 이름 수정하고 하는 부분임 -->
+    <string name="weightMenuLabel">몸무게 보는거!</string>
     <string name="weightLabel">Weight(kg)</string>
     <string name="fatLabel">Fat(%)</string>
     <string name="bonesLabel">Bones(%)</string>
