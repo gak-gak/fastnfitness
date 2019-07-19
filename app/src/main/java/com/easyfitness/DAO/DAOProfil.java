@@ -27,8 +27,9 @@ public class DAOProfil extends DAOBase {
     public static final String GENDER = "gender";                       // GENDER = 성별 저장하는 변수
 
     public static final String TABLE_CREATE = "CREATE TABLE " + TABLE_NAME + " (" + KEY + " INTEGER PRIMARY KEY AUTOINCREMENT, " + CREATIONDATE + " DATE, " + NAME + " TEXT, " + SIZE + " INTEGER, " + BIRTHDAY + " DATE, " + PHOTO + " TEXT, " + GENDER + " INTEGER);";
-    // 사용자 프로필 테이블을 생성하는 문구 생성
+    // 사용자 프로필 table 생성하는 query문을 TABLE_CREATE로 지정
     public static final String TABLE_DROP = "DROP TABLE IF EXISTS " + TABLE_NAME + ";";
+    // 이미 존재하는 table 일 경우 삭제하는 query문을 TABLE_DROP으로 지정
 
     private Cursor mCursor = null;
 
@@ -57,7 +58,7 @@ public class DAOProfil extends DAOBase {
         value.put(DAOProfil.SIZE, m.getSize());
         value.put(DAOProfil.PHOTO, m.getPhoto());
         value.put(DAOProfil.GENDER, m.getGender());
-                                                                    // 위와 같이 변수들을 이용해서 데이터들을 PUT해줌
+                                                                    // 위와 같이 변수들을 이용해서 사용자 table에 데이터 넣어주기
         db.insert(DAOProfil.TABLE_NAME, null, value);       // DB 에 넣어주는 것을 확인 가능
 
         close();
