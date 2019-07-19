@@ -40,7 +40,7 @@ import com.onurkaganaldemir.ktoastlib.KToast;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
+/**body track 카테고리 내용(측정값 추가, 그래프 등등....)**/
 
 public class BodyPartDetailsFragment extends Fragment {
     Button addButton = null;
@@ -187,7 +187,7 @@ public class BodyPartDetailsFragment extends Fragment {
         refreshData();
     }
 
-    private void DrawGraph(List<BodyMeasure> valueList) {
+    private void DrawGraph(List<BodyMeasure> valueList) {  //저장된 값을 이용해 그래프 그리기
 
         // Recupere les enregistrements
         if (valueList.size() < 1) {
@@ -211,7 +211,7 @@ public class BodyPartDetailsFragment extends Fragment {
     }
 
     /*  */
-    private void FillRecordTable(List<BodyMeasure> valueList) {
+    private void FillRecordTable(List<BodyMeasure> valueList) {  //그래프 아래 나와있는 몸무게 기록 record
         Cursor oldCursor = null;
 
         if (valueList.isEmpty()) {

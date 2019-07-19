@@ -114,7 +114,7 @@ public class WeightFragment extends Fragment {
         // update graph and table
         refreshData();
     };
-    private OnClickListener showHelp = v -> {
+    private OnClickListener showHelp = v -> {  //'?'버튼 누르면 나오는 관련 설명 설정
         switch (v.getId()) {
             case R.id.imcHelp:
                 new SweetAlertDialog(getContext(), SweetAlertDialog.NORMAL_TYPE)
@@ -159,7 +159,7 @@ public class WeightFragment extends Fragment {
 
         return f;
     }
-
+    //weight track 카테고리 전체 화면 기본 설정(버튼, 도움말 등)
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -195,7 +195,7 @@ public class WeightFragment extends Fragment {
         imcHelpButton.setOnClickListener(showHelp);
         ffmiHelpButton.setOnClickListener(showHelp);
         rfmHelpButton.setOnClickListener(showHelp);
-        weightDetailsButton.setOnClickListener(showDetailsFragment);
+        weightDetailsButton.setOnClickListener(showDetailsFragment);  //여기부터 아래 4줄 => 각 부분의 상세페이지(그래프, 기록) 있는 곳하고 버튼 연결
         fatDetailsButton.setOnClickListener(showDetailsFragment);
         musclesDetailsButton.setOnClickListener(showDetailsFragment);
         waterDetailsButton.setOnClickListener(showDetailsFragment);
@@ -431,7 +431,7 @@ public class WeightFragment extends Fragment {
             }
         }
     }
-
+    //삭제 메시지창 띄우기
     private void showDeleteDialog(final long idToDelete) {
 
         new SweetAlertDialog(getContext(), SweetAlertDialog.WARNING_TYPE)

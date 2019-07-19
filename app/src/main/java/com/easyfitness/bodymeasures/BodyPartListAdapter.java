@@ -43,7 +43,7 @@ public class BodyPartListAdapter extends ArrayAdapter<BodyPart> implements View.
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(int position, View convertView, ViewGroup parent) {  //body track의 화면 구성
         //
 
         // Get the data item for this position
@@ -74,13 +74,13 @@ public class BodyPartListAdapter extends ArrayAdapter<BodyPart> implements View.
         //Animation animation = AnimationUtils.loadAnimation(mContext, (position > lastPosition) ? R.anim.up_from_bottom : R.anim.down_from_top);
         //result.startAnimation(animation);
         //lastPosition = position;
-        viewHolder.txtID.setText(String.valueOf(dataModel.getId()));
+        viewHolder.txtID.setText(String.valueOf(dataModel.getId()));  //body track 첫 화면에 신체 부위 이름 나타내기
         viewHolder.txtName.setText(this.getContext().getResources().getText(dataModel.getResourceNameID()));
-        if (dataModel.getLastMeasure() != null)
+        if (dataModel.getLastMeasure() != null)  //body track 첫 화면에 Last record 가져오기
             viewHolder.txtLastMeasure.setText(String.valueOf(dataModel.getLastMeasure().getBodyMeasure()));
         else
             viewHolder.txtLastMeasure.setText("-");
-        viewHolder.logo.setImageResource(dataModel.getResourceLogoID());
+        viewHolder.logo.setImageResource(dataModel.getResourceLogoID());  //body track 첫 화면에 각 부위별 사진아이콘 가져옴
         // Return the completed view to render on screen
         return convertView;
     }

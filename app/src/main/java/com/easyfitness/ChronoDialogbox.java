@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.Button;
 
 import gr.antoniom.chronometer.Chronometer;
-
+/**시계모양 클릭하면 나오는 스톱워치 관련 코드**/
 public class ChronoDialogbox extends Dialog implements
     android.view.View.OnClickListener {
 

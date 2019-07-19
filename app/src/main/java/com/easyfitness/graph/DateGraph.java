@@ -62,7 +62,7 @@ public class DateGraph {
         xAxis.setGranularity(1); // 1 jour
         xAxis.setValueFormatter(new IAxisValueFormatter() {
 
-            private SimpleDateFormat mFormat = new SimpleDateFormat("dd-MMM"); // HH:mm:ss
+            private SimpleDateFormat mFormat = new SimpleDateFormat("dd-MMM"); // HH:mm:ss //그래프 x축 포맷
 
             @Override
             public String getFormattedValue(float value, AxisBase axis) {
@@ -98,7 +98,7 @@ public class DateGraph {
         set1.setLineWidth(3f);
         set1.setCircleRadius(4f);
         set1.setDrawFilled(true);
-        if (Utils.getSDKInt() >= 18) {
+        if (Utils.getSDKInt() >= 18) {   //그래프 아래 색채우기(지금은 파란색 그라데이션)
             // fill drawable only supported on api level 18 and above
             Drawable drawable = ContextCompat.getDrawable(mContext, R.drawable.fade_blue);
             set1.setFillDrawable(drawable);
@@ -139,7 +139,7 @@ public class DateGraph {
         return output.toString();
     }
 
-    public LineChart getChart() {
+    public LineChart getChart() {  //그래프 출력인듯?
         return mChart;
     }
 

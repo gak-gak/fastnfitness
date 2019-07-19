@@ -112,7 +112,7 @@ public class FonteGraphFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,  //Workout 카테고리 Graphs창 생
                              Bundle savedInstanceState) {
 
         // Inflate the layout for this fragment
@@ -242,7 +242,7 @@ public class FonteGraphFragment extends Fragment {
         ArrayList<BarEntry> yBarVals = new ArrayList<>();
         Description desc = new Description();
 
-        if (m.getType() == DAOMachine.TYPE_FONTE) {
+        if (m.getType() == DAOMachine.TYPE_FONTE) {  //Graph Display 타입 선택
             if (lFunction.equals(mActivity.getResources().getString(R.string.maxRep1))) {
                 lDAOFunction = DAOFonte.MAX1_FCT;
             } else if (lFunction.equals(mActivity.getResources().getString(R.string.maxRep5d))) {
@@ -250,7 +250,7 @@ public class FonteGraphFragment extends Fragment {
             } else if (lFunction.equals(mActivity.getResources().getString(R.string.sum))) {
                 lDAOFunction = DAOFonte.SUM_FCT;
             }
-            desc.setText(lMachine + "/" + lFunction + "(kg)");
+            desc.setText(lMachine + "/" + lFunction + "(kg)");  //그래프 아래 나타나는 작은 검은색 글
             // Recupere les enregistrements
             List<GraphData> valueList = null;
             if (m.getType() == DAOMachine.TYPE_FONTE)
@@ -258,7 +258,7 @@ public class FonteGraphFragment extends Fragment {
             else
                 valueList = mDbStatic.getStaticFunctionRecords(getProfil(), lMachine, lDAOFunction);
 
-            if (valueList.size() <= 0) {
+            if (valueList.size() <= 0) {  //입력된 값이 없으면 그래프가 안나타님
                 // mLineChart.clear(); Already cleared
                 return;
             }
@@ -271,7 +271,7 @@ public class FonteGraphFragment extends Fragment {
                 defaultUnit = 0;
             }
 
-            for (int i = 0; i < valueList.size(); i++) {
+            for (int i = 0; i < valueList.size(); i++) {  //입력된 값들이 있을때(261라인 코드와 반대)
                 Entry value = null;
                 if (defaultUnit == UnitConverter.UNIT_LBS) {
                     value = new Entry((float) valueList.get(i).getX(), UnitConverter.KgtoLbs((float) valueList.get(i).getY()));//-minDate)/86400000));

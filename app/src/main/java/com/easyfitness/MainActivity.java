@@ -932,7 +932,7 @@ public class MainActivity extends AppCompatActivity {
             mBackPressed = System.currentTimeMillis();
         }
     }
-    //어플 첨 시작할때 프로필 만드는거인듯
+    //새 프로필 만드는거인듯
     public void initActivity() {
         // Initialisation des objets DB
         mDbProfils = new DAOProfil(this.getApplicationContext());

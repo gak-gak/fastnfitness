@@ -20,7 +20,7 @@ import com.mikhaellopez.circularimageview.CircularImageView;
 
 import java.util.ArrayList;
 import java.util.List;
-
+/**왼쪽 카테고리 리스트 세부설정**/
 public class CustomDrawerAdapter extends ArrayAdapter<DrawerItem> {
 
     Context context;

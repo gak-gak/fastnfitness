@@ -56,7 +56,7 @@ public class BarGraphMarkerView extends MarkerView {
     }
 
     @Override
-    public MPPointF getOffset() {
+    public MPPointF getOffset() {  //아마 그래프에서 각 꼭지점에 나타나는 점 위치 구하는 거 인듯
 
         if (mOffset == null) {
             // center the marker horizontally and vertically
@@ -67,7 +67,7 @@ public class BarGraphMarkerView extends MarkerView {
     }
 
     @Override
-    public void draw(Canvas canvas, float posX, float posY) {
+    public void draw(Canvas canvas, float posX, float posY) {  //그래프 그리기
         // take offsets into consideration
         int lineChartWidth = 0;
         int lineChartHeight = 0;

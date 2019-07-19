@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.TimeZone;
-
+/**weight track의 Weight 부분 (세부내용 Date, Measure)**/
 public class DAOWeight extends DAOBase {
 
     // Contacts table name
@@ -43,25 +43,25 @@ public class DAOWeight extends DAOBase {
      * @param pWeight  weight
      * @param pProfile profil associated with the measure
      */
-    public void addWeight(Date pDate, float pWeight, Profile pProfile) {
-        SQLiteDatabase db = this.getWritableDatabase();
-
+    public void addWeight(Date pDate, float pWeight, Profile pProfile) {  //몸무게 추가(중요) => 사진 날짜 별로 저장하는 코드 구현할 때 참고합시다.
+        SQLiteDatabase db = this.getWritableDatabase();  //DB쓰기
+        //새 정보 추가
         ContentValues value = new ContentValues();
 
-        SimpleDateFormat dateFormat = new SimpleDateFormat(DAOUtils.DATE_FORMAT);
+        SimpleDateFormat dateFormat = new SimpleDateFormat(DAOUtils.DATE_FORMAT);  //날짜를 기준으로 몸무게 track
         dateFormat.setTimeZone(TimeZone.getTimeZone("GMT"));
 
         value.put(DAOWeight.DATE, dateFormat.format(pDate));
         value.put(DAOWeight.POIDS, pWeight);
         value.put(DAOWeight.PROFIL_KEY, pProfile.getId());
 
-        db.insert(DAOWeight.TABLE_NAME, null, value);
+        db.insert(DAOWeight.TABLE_NAME, null, value);  //data 추가
         db.close(); // Closing database connection
     }
 
     // Getting single value
     private ProfileWeight getMeasure(long id) {
-        SQLiteDatabase db = this.getReadableDatabase();
+        SQLiteDatabase db = this.getReadableDatabase();  //DB읽기
 
         mCursor = null;
         mCursor = db.query(TABLE_NAME,

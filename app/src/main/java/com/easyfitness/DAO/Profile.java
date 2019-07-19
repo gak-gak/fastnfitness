@@ -3,7 +3,7 @@ package com.easyfitness.DAO;
 import com.easyfitness.utils.Gender;
 
 import java.util.Date;
-
+//프로필 내용 가져오기
 
 /* DataBase Object */
 public class Profile {

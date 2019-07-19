@@ -7,7 +7,7 @@ import android.app.DialogFragment;
 import android.os.Bundle;
 
 import java.util.Calendar;
-
+/**달력나오고 날짜 선택하는거**/
 
 public class DatePickerDialogFragment extends DialogFragment {
 
