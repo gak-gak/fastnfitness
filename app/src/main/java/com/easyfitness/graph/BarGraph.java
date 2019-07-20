@@ -124,7 +124,7 @@ public class BarGraph {
 
     public BarChart getChart() {
         return mChart;
-    }
+    }   // 이런식으로 return mChart를 통해 그래프를 가져오면 되지 않을까...? (거울에 디스플레이할 때)
 
 
 }

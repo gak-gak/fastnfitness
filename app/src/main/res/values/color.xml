@@ -3,8 +3,8 @@
     <color name="toolbar_background">#0CACF4</color>
     <color name="background_odd">#99D6EA</color>
     <color name="background_even">#CCEAF4</color>
-    <color name="graph_fill">#f2fbff</color>
-    <color name="background">#FFFFFF</color>
+    <color name="graph_fill">#f2fbff</color>    // #ffffff = 하얀색 (거울에 그래프 표현할 때는 하얀색으로 바꿔야 표시날 듯)
+    <color name="background">#FFFFFF</color>    // #000000 = 검은색 (바탕이 까만 색이어야 거울에 표현 가능)
     <color name="tableheader_background">#FFFFFF</color>
     <color name="launcher_background">#0dadf4</color>
 </resources>
