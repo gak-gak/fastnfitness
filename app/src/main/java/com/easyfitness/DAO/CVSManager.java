@@ -25,6 +25,10 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
+/** 여기는 점 세개 눌렀을 때, Export Records를 처리하는 부분인듯함
+ *  데이터 내보내는 작업을 여기서 잘 활용해서 처리해도 될 듯 **/
+
+/** 맨 마지막 함수인 importDatabase 함수에서는 Import Records를 처리함 **/
 
 // Uses http://javacsv.sourceforge.net/com/csvreader/CsvReader.html //
 public class CVSManager {

@@ -445,6 +445,8 @@ public class MainActivity extends AppCompatActivity {
             // Si oui, supprimer la base de donnee et refaire un Start.
             exportDbBuilder.setPositiveButton(getActivity().getResources().getText(R.string.global_yes), (dialog, which) -> {
                 CVSManager cvsMan = new CVSManager(getActivity().getBaseContext());
+                // 여기서 CSVManager는 /DAO/cardio 내에 존재하는 클래스임
+                // 거기에 exportDatabase 함수가 있고, 거기서 세세한 작업을 다뤄주는 듯함
                 if (cvsMan.exportDatabase(getCurrentProfil())) {
                     KToast.successToast(getActivity(), getCurrentProfil().getName() + ": " + getActivity().getResources().getText(R.string.export_success), Gravity.BOTTOM, KToast.LENGTH_LONG);
                 } else {
